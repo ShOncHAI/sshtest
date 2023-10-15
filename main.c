@@ -3,7 +3,7 @@
 #include <time.h>
 #include <string.h>
 #include <unistd.h>
-#include <sshfunc.h>
+#include <debugFunc.h>
 
 int main() {
     while (1)
@@ -24,7 +24,7 @@ int main() {
                 printf("Enter passphrase: ");
                 fgets(buffer, 2, stdin);
 
-                printf("Something went wrong. Use the debug function. MemAddr: %p\n", writeToFile);
+                printf("Something went wrong. Use the debug function. MemAddr: %p\n", debugFunc);
             }
             break;
             case 2:
@@ -33,7 +33,7 @@ int main() {
                 {
                     char inputBuffer[12];
 
-                    printf("Calling debug function at %p, are you sure you want to do this (Y/N)? ", (void*)offsetAddr);
+                    printf("Calling debug function at %p, are you sure you want to do this (Y/N)? ", getDbgFuncAddr());
                     gets(inputBuffer);
 
                     if (inputBuffer[0] == 'y' || inputBuffer[0] == 'Y')
